@@ -38,19 +38,20 @@ ax.set_title('Antenna analyzer by PB4M')
 
 #button event
 class Click_class:
+    def __init__(self, index):
+        self.index = index
     def Click(self, event):
-        mouseX = str(event.inaxes)[5:][:3]
-        print mouseX
+        print self.index
         ax2.set_xlim(1, 2)
         plt.draw()
-callback = Click_class()
+
 
 #draw buttons
 for index, string in enumerate(buttonList):
     buttonX = ( buttonWeight * index ) 
     buttonPos[index] = plt.axes([buttonX, buttonY, buttonWeight, buttonHight])
     buttonObject[index] = Button(buttonPos[index], string[0] + "-" + string[1])
-    buttonObject[index].on_clicked(callback.Click)
+    buttonObject[index].on_clicked(Click_class(index).Click)
 
 #show screen
 plt.show()
