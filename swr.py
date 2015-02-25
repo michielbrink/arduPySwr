@@ -4,7 +4,6 @@
 from __future__ import division
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.widgets import SpanSelector
 from matplotlib.widgets import Button
 
 #variables
@@ -21,16 +20,18 @@ buttonWeight = 1 / len(buttonList)
 x = np.arange(0.0, 5.0, 0.01)
 y = np.sin(2*np.pi*x) + 0.5*np.random.randn(len(x))
 
-#plot figure 0
+#add figure
 fig = plt.figure(figsize=(8,6))
-plt.subplots_adjust(bottom=0.2)
+
+#plot figure 0
 ax = fig.add_subplot(211, axisbg='#FFFFCC')
+plt.subplots_adjust(bottom=0.2)
 ax.plot(x, y, '-')
 
 #plot figure 1
 ax2 = fig.add_subplot(212, axisbg='#FFFFCC')
 plt.subplots_adjust(bottom=0.2)
-line2, = ax2.plot(x, y, '-')
+ax2.plot(x, y, '-')
 
 #add title
 ax.set_title('Antenna analyzer by PB4M')
